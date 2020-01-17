@@ -8,8 +8,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.mooc.libnavannotation.FragmentDestination
 import com.mooc.ppjoke.R
 
+
+@FragmentDestination(pageUrl = "main/tabs/home", asStarter = true)
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
