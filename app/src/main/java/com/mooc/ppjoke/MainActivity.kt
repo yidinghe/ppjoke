@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
+        val fragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+
         navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -32,7 +34,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        NavGraphBuilder.build(navController)
+        NavGraphBuilder.build(navController, this, fragment?.id ?: 0)
 
         navView.setOnNavigationItemSelectedListener(this)
     }

@@ -1,6 +1,7 @@
 package com.mooc.ppjoke.ui.notifications
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mooc.libnavannotation.FragmentDestination
 import com.mooc.ppjoke.R
+import timber.log.Timber
 
 @FragmentDestination(pageUrl = "main/tabs/notification", asStarter = false)
 class NotificationsFragment : Fragment() {
@@ -28,6 +30,7 @@ class NotificationsFragment : Fragment() {
         notificationsViewModel.text.observe(this, Observer {
             textView.text = it
         })
+        Log.d("onCreateView", "NotificationsFragment")
         return root
     }
 }
