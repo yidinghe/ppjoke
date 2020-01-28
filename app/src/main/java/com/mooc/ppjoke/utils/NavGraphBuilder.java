@@ -27,24 +27,24 @@ public class NavGraphBuilder {
         HashMap<String, Destination> destConfig = AppConfig.getDestConfig();
 
         for (Destination value : destConfig.values()) {
-            if (value.isFragment()) {
+            if (value.isFragment) {
                 FragmentNavigator.Destination destination = fragmentNavigator.createDestination();
-                destination.setClassName(value.getClazName());
-                destination.setId(value.getId());
-                destination.addDeepLink(value.getPageUrl());
+                destination.setClassName(value.className);
+                destination.setId(value.id);
+                destination.addDeepLink(value.pageUrl);
 
                 navGraph.addDestination(destination);
             } else {
                 ActivityNavigator.Destination destination = activityNavigator.createDestination();
-                destination.setId(value.getId());
-                destination.addDeepLink(value.getPageUrl());
-                destination.setComponentName(new ComponentName(AppGlobals.getApplication().getPackageName(), value.getClazName()));
+                destination.setId(value.id);
+                destination.addDeepLink(value.pageUrl);
+                destination.setComponentName(new ComponentName(AppGlobals.getApplication().getPackageName(), value.className));
 
                 navGraph.addDestination(destination);
             }
 
-            if (value.getAsStarter()) {
-                navGraph.setStartDestination(value.getId());
+            if (value.asStarter) {
+                navGraph.setStartDestination(value.id);
             }
         }
 
