@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.mooc.ppjoke.utils.NavGraphBuilder
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,5 +26,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        NavGraphBuilder.build(navController)
     }
 }
