@@ -42,7 +42,7 @@ public abstract class Request<T, R extends Request> implements Cloneable {
     public static final int NET_CACHE = 4;
     private String cacheKey;
     private Type mType;
-    //private Class mClaz;
+    private Class mClaz;
     private int mCacheStrategy = NET_ONLY;
 
     @IntDef({CACHE_ONLY, CACHE_FIRST, NET_CACHE, NET_ONLY})
@@ -180,11 +180,11 @@ public abstract class Request<T, R extends Request> implements Cloneable {
 
     private ApiResponse<T> readCache() {
         String key = TextUtils.isEmpty(cacheKey) ? generateCacheKey() : cacheKey;
-       // Object cache = CacheManager.getCache(key);
+        // Object cache = CacheManager.getCache(key);
         ApiResponse<T> result = new ApiResponse<>();
         result.status = 304;
         result.message = "缓存获取成功";
-       // result.body = (T) cache;
+        // result.body = (T) cache;
         result.success = true;
         return result;
     }
@@ -204,11 +204,9 @@ public abstract class Request<T, R extends Request> implements Cloneable {
                     result.body = (T) convert.convert(content, argument);
                 } else if (mType != null) {
                     result.body = (T) convert.convert(content, mType);
-                }
-//                } else if (mClaz != null) {
-//                    result.body = (T) convert.convert(content, mClaz);
-//                }
-                else {
+                } else if (mClaz != null) {
+                    result.body = (T) convert.convert(content, mClaz);
+                } else {
                     Log.e("request", "parseResponse: 无法解析 ");
                 }
             } else {
