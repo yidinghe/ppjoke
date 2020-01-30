@@ -1,4 +1,4 @@
-package com.mooc.ppjoke.utils;
+package com.mooc.libcommon.global;
 
 import android.app.Application;
 
