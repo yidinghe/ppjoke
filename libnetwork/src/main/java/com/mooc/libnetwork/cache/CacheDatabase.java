@@ -3,6 +3,7 @@ package com.mooc.libnetwork.cache;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 import com.mooc.libcommon.global.AppGlobals;
 
@@ -35,7 +36,17 @@ public abstract class CacheDatabase extends RoomDatabase {
 
     }
 
+    public abstract CacheDao getCache();
+
     public static CacheDatabase get() {
         return database;
     }
+
+//    static Migration sMigration = new Migration(1, 3) {
+//        @Override
+//        public void migrate(@NonNull SupportSQLiteDatabase database) {
+//            database.execSQL("alter table teacher rename to student");
+//            database.execSQL("alter table teacher add column teacher_age INTEGER NOT NULL default 0");
+//        }
+//    };
 }

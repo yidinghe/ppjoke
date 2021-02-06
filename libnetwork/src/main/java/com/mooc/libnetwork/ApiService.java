@@ -19,8 +19,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 
 public class ApiService {
     protected static final OkHttpClient okHttpClient;
-    protected static Convert sConvert;
     protected static String sBaseUrl;
+    protected static Convert sConvert;
 
     static {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

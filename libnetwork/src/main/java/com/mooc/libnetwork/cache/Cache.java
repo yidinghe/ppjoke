@@ -1,8 +1,15 @@
 package com.mooc.libnetwork.cache;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Index;
+import androidx.room.Insert;
 import androidx.room.PrimaryKey;
+
+import com.alibaba.fastjson.JSONObject;
 
 import java.io.Serializable;
 
@@ -54,3 +61,12 @@ public class Cache implements Serializable {
     //public ForeignTable foreignTable;
 
 }
+
+//public class ForeignTable implements Serializable {
+//    @PrimaryKey
+//    @NonNull
+//    public String foreign_key;
+//
+//    //@ColumnInfo(name = "_data")
+//    public byte[] foreign_data;
+//}
